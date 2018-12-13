@@ -10,6 +10,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ConfiguracionAppsComponent } from './components/configuracion-apps/configuracion-apps.component';
+import { ModalsComponent } from './components/modals/modals.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SelectModulesComponent } from './components/select-modules/select-modules.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,18 @@ import { ConfiguracionAppsComponent } from './components/configuracion-apps/conf
     NavbarComponent,
     ContactoComponent,
     FooterComponent,
-    ConfiguracionAppsComponent
+    ConfiguracionAppsComponent,
+    ModalsComponent
+    ConfiguracionAppsComponent,
+    SelectModulesComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     CommonModule,
-    AppRouting
+    AppRouting,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

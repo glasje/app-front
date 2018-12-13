@@ -1,84 +1,33 @@
- <!-- START HOMEPAGE DESIGN AREA -->
- <header id="home" class="welcome-area">
-  <div class="header-top-area">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-3">
-                  <!-- START LOGO DESIGN AREA -->
-                  <div class="logo">
-                      <a href="index.html">
-                          <p>Generador de Apps</p>
-                      </a>
-                  </div>
-                  <!-- END LOGO DESIGN AREA -->
-              </div>
-              <div class="col-md-9">
-                  <!-- START MENU DESIGN AREA -->
-                  <div class="mainmenu">
-                      <div class="navbar navbar-nobg">
-                          <div class="navbar-header">
-                              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                  <span class="sr-only">Toggle navigation</span>
-                                  <span class="icon-bar"></span>
-                                  <span class="icon-bar"></span>
-                                  <span class="icon-bar"></span>
-                              </button>
-                          </div>
-                          <div class="navbar-collapse collapse">
-                              <ul class="nav navbar-nav navbar-right">
-                                  <li class="active"><a class="smoth-scroll" href="#home">Inicio <div class="ripple-wrapper"></div></a>
-                                  </li>
-                                  <li><a class="smoth-scroll" href="#service">Catacterísticas</a>
-                                  </li>
-                                  <li><a class="smoth-scroll" href="#Screenshots">Plantillas</a>
-                                  </li>
-                                  <!-- <li><a class="smoth-scroll" href="#testimonial">users</a>
-                                  </li> -->
-                                  <li><a class="smoth-scroll" href="#pricing">Precios</a>
-                                  </li>
-                                  <li><a class="smoth-scroll" href="#download">Solución</a>
-                                  </li>
-                                  <li><a class="smoth-scroll"  style="text-decoration: underline ;" (click)='CrearApps()'>Empezar</a>
-                                  </li>
-                                  <li><a class="smoth-scroll" href="#contact">Contacto</a>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- END MENU DESIGN AREA -->
-              </div>
-          </div>
-      </div>
-  </div>
-  <div *ngIf='crearApps' id="bg-effect" class="welcome-video-area">
-      <a class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=iNJdPyoqt8U&t=55s',containment:'#home', showControls:false, autoPlay:true, zoom:0, loop:true, mute:true, startAt:0, opacity:1, quality:'default'}"></a>
-      <canvas id="background-effect"></canvas>
-      <div class="display-table">
-          <div class="display-table-cell">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-md-7">
-                          <div class="header-text">
-                              <h2 class="wow fadeInUp" data-wow-delay=".2s">El mejor Generador de Apps de ...</h2>
-                              <p class="wow fadeInUp" data-wow-delay=".4s">Mensaje secundario</p>
-                              <div class="video-area-text wow fadeInUp" data-wow-delay=".6s">
-                                  <a href="https://www.youtube.com/watch?v=eDmXfCaDfXY" class="video-play mfp-iframe">
-                                      <i class="fa fa-play"></i>
-                                  </a>
-                                  <h2>intro video</h2>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-5">
-                          <div class="header-image">
-                              <img src="assets/images/app.png" alt="" class="img-responsive">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</header>
-<!-- / END HOMEPAGE DESIGN AREA -->
+<nav id="home" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Generador de Apps</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link smoth-scroll" href="#home">Inicio <div class="ripple-wrapper"></div></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link smoth-scroll" href="#service">Características</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link smoth-scroll" href="#Screenshots">Plantillas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link smoth-scroll" href="#pricing">Precios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link smoth-scroll" href="#download">Solución</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link smoth-scroll" style="text-decoration: underline ;" (click)='CrearApps()'>Empezar</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link smoth-scroll" href="#contact">Contacto</a>
+                </li>
+        </ul>
+    </div>
+</nav>
