@@ -9,6 +9,8 @@ import { ConfiguracionAppsComponent } from './components/configuracion-apps/conf
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'Home', component: HomeComponent },
+
   { path: 'ConfiguracionApps', component: ConfiguracionAppsComponent },
 
   { path: '**', component: HomeComponent }

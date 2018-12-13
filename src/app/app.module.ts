@@ -13,6 +13,10 @@ import { ConfiguracionAppsComponent } from './components/configuracion-apps/conf
 import { ModalsComponent } from './components/modals/modals.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SelectModulesComponent } from './components/select-modules/select-modules.component';
+// DIRECTIVES
+import {
+  LettersCharDirective
+} from './directives';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { SelectModulesComponent } from './components/select-modules/select-modul
     ConfiguracionAppsComponent,
     ModalsComponent,
     ConfiguracionAppsComponent,
-    SelectModulesComponent
+    SelectModulesComponent,
+    LettersCharDirective
   ],
   imports: [
     BrowserModule,
