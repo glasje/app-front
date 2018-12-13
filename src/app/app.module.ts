@@ -22,7 +22,7 @@ import { SelectModulesComponent } from './components/select-modules/select-modul
     ContactoComponent,
     FooterComponent,
     ConfiguracionAppsComponent,
-    ModalsComponent
+    ModalsComponent,
     ConfiguracionAppsComponent,
     SelectModulesComponent
   ],
