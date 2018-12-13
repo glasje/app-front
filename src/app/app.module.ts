@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ConfiguracionAppsComponent } from './components/configuracion-apps/configuracion-apps.component';
 import { ModalsComponent } from './components/modals/modals.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SelectModulesComponent } from './components/select-modules/select-modules.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FooterComponent,
     ConfiguracionAppsComponent,
     ModalsComponent
+    ConfiguracionAppsComponent,
+    SelectModulesComponent
   ],
   imports: [
     BrowserModule,
