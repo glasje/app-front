@@ -1,0 +1,67 @@
+.box {
+    -webkit-box-shadow: 0px 2px 18px 2px rgba(173,164,173,1);
+    -moz-box-shadow: 0px 2px 18px 2px rgba(173,164,173,1);
+    box-shadow: 0px 2px 18px 2px rgba(173,164,173,1);
+    max-height: 180px;
+    cursor: pointer;
+}
+.box:hover{
+    -webkit-box-shadow: 0px 2px 18px 7px rgba(194,180,194,1);
+    -moz-box-shadow: 0px 2px 18px 7px rgba(194,180,194,1);
+    box-shadow: 0px 2px 18px 7px rgba(194,180,194,1);
+}
+.box-html5:hover{
+    background-color: #f2652d96;
+    color:white;
+}
+.box-html5:active{
+    background-color: #f2652de0;
+}
+.box-pdf:hover{
+    background-color: #cc372aa8;
+}
+.box-pdf:active{
+    background-color: #cc372ac9;
+}
+.box-facebook:hover{
+    background-color: #3f63acd1;
+}
+.box-facebook:active{
+    background-color: #355aa5;
+}
+.box-twitter:active{
+    background-color: #1d9cea;
+}
+.box-twitter:hover{
+    background-color: #02a6e5d1;
+}
+.box-soundCloud:hover{
+    background-color: #f58834;
+}
+.box-soundCloud:active{
+    background-color: #f04536;
+}
+.box-contacto:hover{
+    background-color: #39ad71;
+}
+.box-contacto:active{
+    background-color: #2b8657;
+}
+.box-youtube:hover{
+    background-color: #f04128b0;
+}
+.box-youtube:active{
+    background-color: #f04128e8;
+}
+.box-googleform:active{
+    background-color: #4ca351;
+}
+.box-googleform:hover{
+    background-color: #4180ecdb;
+}
+.box-wordpress:hover{
+    background-color: #029bcc;
+}
+.box-wordpress:active{
+    background-color: #207196;
+}
