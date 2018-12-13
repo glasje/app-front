@@ -10,6 +10,10 @@
     -moz-box-shadow: 0px 2px 18px 7px rgba(194,180,194,1);
     box-shadow: 0px 2px 18px 7px rgba(194,180,194,1);
 }
+.box:hover > h4,
+.box:hover > .service-icon > i{
+    color:white;
+}
 .box-html5:hover{
     background-color: #f2652d96;
     color:white;
