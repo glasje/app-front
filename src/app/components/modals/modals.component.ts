@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ConfigurarAppsService } from 'src/app/services/configurar-apps.service';
 
 @Component({
   selector: 'app-modals',
@@ -12,7 +13,12 @@ export class ModalsComponent implements OnInit {
   private formAgregarRadio: FormGroup;
   private formAgregarYoutube: FormGroup;
   private formAgregarUsuario: FormGroup;
-  constructor() {
+  listaDatos = [];
+  formAgregarGoogle: FormGroup;
+  formAgregarWordpress: FormGroup;
+  constructor(
+    private _conigurarApps: ConfigurarAppsService
+  ) {
     const reg = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
     // Form agregar red social
     this.formAgregarFacebook = new FormGroup({
@@ -34,6 +40,17 @@ export class ModalsComponent implements OnInit {
       })
     });
 
+    this.formAgregarGoogle = new FormGroup({
+      urlGoogle: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
+      })
+    });
+
+    this.formAgregarWordpress = new FormGroup({
+      urlWordpress: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
+      })
+    });
     // Form agregar radio
     this.formAgregarRadio = new FormGroup({
       titulo: new FormControl(null, {
@@ -56,12 +73,13 @@ export class ModalsComponent implements OnInit {
         validators: [Validators.required]
       }),
       email: new FormControl(null, {
-        validators: [Validators.required]
+        validators: [Validators.required, Validators.email]
       }),
       direccion: new FormControl(null, {
         validators: [Validators.required]
       })
     });
+    this.listaDatos = [];
   }
 
 
@@ -70,7 +88,10 @@ export class ModalsComponent implements OnInit {
 
   AgregarFacebook() {
     if (this.formAgregarFacebook.valid) {
-      console.log('aquii');
+      let url = this.formAgregarFacebook.get('urlFacebook').value;
+      this._conigurarApps.AgregarDatos(url, 'facebook');
+      document.getElementById('btnAgregarFacebook').click();
+      this.formAgregarFacebook.reset();
     } else {
       Object.keys(this.formAgregarFacebook.controls).forEach(key => {
         this.formAgregarFacebook.get(key).markAsTouched();
@@ -78,9 +99,25 @@ export class ModalsComponent implements OnInit {
     }
   }
 
+  AgregarForm() {
+    if (this.formAgregarGoogle.valid) {
+      let url = this.formAgregarGoogle.get('urlGoogle').value;
+      this._conigurarApps.AgregarDatos(url, 'google');
+      document.getElementById('btnAgregarGoogle').click();
+      this.formAgregarGoogle.reset();
+    } else {
+      Object.keys(this.formAgregarGoogle.controls).forEach(key => {
+        this.formAgregarGoogle.get(key).markAsTouched();
+      });
+    }
+  }
+
   AgregarTwitter() {
     if (this.formAgregarTwitter.valid) {
-      console.log('aquii');
+      let url = this.formAgregarTwitter.get('urlTwitter').value;
+      this._conigurarApps.AgregarDatos(url, 'twitter');
+      document.getElementById('btnAgregarTwitter').click();
+      this.formAgregarTwitter.reset();
     } else {
       Object.keys(this.formAgregarTwitter.controls).forEach(key => {
         this.formAgregarTwitter.get(key).markAsTouched();
@@ -90,7 +127,20 @@ export class ModalsComponent implements OnInit {
 
   AgregarRadioLinea() {
     if (this.formAgregarRadio.valid) {
-      console.log('aquii');
+      let titulo = this.formAgregarRadio.get('titulo').value;
+      let descripcion = this.formAgregarRadio.get('descripcion').value;
+      let url = this.formAgregarRadio.get('urlRadio').value;
+      let radio = {
+        titulo: '',
+        descripcion: '',
+        url: ''
+      };
+      radio.titulo = titulo;
+      radio.descripcion = descripcion;
+      radio.url = url;
+      this._conigurarApps.AgregarDatos(radio, 'radio');
+      document.getElementById('btnAgregarRadio').click();
+      this.formAgregarRadio.reset();
     } else {
       Object.keys(this.formAgregarRadio.controls).forEach(key => {
         this.formAgregarRadio.get(key).markAsTouched();
@@ -100,7 +150,10 @@ export class ModalsComponent implements OnInit {
 
   AgregarYoutube() {
     if (this.formAgregarYoutube.valid) {
-      console.log('aquii');
+      let url = this.formAgregarYoutube.get('urlYoutube').value;
+      this._conigurarApps.AgregarDatos(url, 'youtube');
+      document.getElementById('btnAgregarYoutube').click();
+      this.formAgregarYoutube.reset();
     } else {
       Object.keys(this.formAgregarYoutube.controls).forEach(key => {
         this.formAgregarYoutube.get(key).markAsTouched();
@@ -108,9 +161,31 @@ export class ModalsComponent implements OnInit {
     }
   }
 
+  AgregarWordpress() {
+    if (this.formAgregarWordpress.valid) {
+      let url = this.formAgregarWordpress.get('urlWordpress').value;
+      this._conigurarApps.AgregarDatos(url, 'wordpress');
+      document.getElementById('btnAgregarWorpress').click();
+      this.formAgregarWordpress.reset();
+    } else {
+      Object.keys(this.formAgregarWordpress.controls).forEach(key => {
+        this.formAgregarWordpress.get(key).markAsTouched();
+      });
+    }
+  }
+
+
   AgregarUsuario() {
     if (this.formAgregarUsuario.valid) {
-      console.log('aquii');
+      let usuario = {
+        nombre: this.formAgregarUsuario.get('nombre').value,
+        contacto: this.formAgregarUsuario.get('contacto').value,
+        email: this.formAgregarUsuario.get('email').value,
+        direccion: this.formAgregarUsuario.get('direccion').value
+      }
+      this._conigurarApps.AgregarDatos(usuario, 'contacto');
+      document.getElementById('btnAgregarUsuario').click();
+      this.formAgregarUsuario.reset();
     } else {
       Object.keys(this.formAgregarUsuario.controls).forEach(key => {
         this.formAgregarUsuario.get(key).markAsTouched();

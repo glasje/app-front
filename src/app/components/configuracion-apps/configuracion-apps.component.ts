@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigurarAppsService } from 'src/app/services/configurar-apps.service';
+import { DatosApps } from 'src/app/models/DatosApps';
 
 @Component({
   selector: 'app-configuracion-apps',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfiguracionAppsComponent implements OnInit {
 
-  constructor() { }
+  listaDatos: DatosApps;
+
+  constructor(
+    private _configurarApps: ConfigurarAppsService
+  ) {
+    this.listaDatos =new DatosApps();
+  }
 
   ngOnInit() {
+    this.ObtenerLista();
+  }
+
+  ObtenerLista() {
+    this._configurarApps.change.subscribe(
+      data => {
+        this.listaDatos = this._configurarApps.listaDatos;
+        console.log('lista', this.listaDatos);
+      }
+    );
   }
 
 }

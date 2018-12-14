@@ -15,7 +15,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SelectModulesComponent } from './components/select-modules/select-modules.component';
 // DIRECTIVES
 import {
-  LettersCharDirective
+  LettersCharDirective,
+  PhoneCharDirective
 } from './directives';
 
 @NgModule({
@@ -29,7 +30,8 @@ import {
     ModalsComponent,
     ConfiguracionAppsComponent,
     SelectModulesComponent,
-    LettersCharDirective
+    LettersCharDirective,
+    PhoneCharDirective
   ],
   imports: [
     BrowserModule,
