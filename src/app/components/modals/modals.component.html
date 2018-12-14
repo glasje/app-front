@@ -1,8 +1,8 @@
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Facebook-->
+<div class="modal fade" id="facebook" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
+      <div class="modal-header bg-facebook text-white">
         <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-facebook mr-2" aria-hidden="true"></i>Cuentas
           Facebook</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -10,12 +10,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="formAgregar" (ngSubmit)="AgregarFacebook()">
+        <form [formGroup]="formAgregarFacebook" (ngSubmit)="AgregarFacebook()">
           <div class="form-group">
             <label for="recipient-name">Url:</label>
             <input type="text" class="form-control" id="recipient-name" placeholder="Ej: www.facebook.com/mi-cuenta "
               formControlName="urlFacebook">
-            <div *ngIf="!formAgregar.get('urlFacebook').valid && formAgregar.get('urlFacebook').touched">
+            <div *ngIf="!formAgregarFacebook.get('urlFacebook').valid && formAgregarFacebook.get('urlFacebook').touched">
               <span class="text-danger">Debe ingresar url</span>
             </div>
           </div>
@@ -24,90 +24,245 @@
 
           </div>
           <div class="info mb-2">
-            <button type="submit" [disabled]="!formAgregar.valid" class="btn btn-primary">Agregar</button>
-            <button id="btnAgregar" data-dismiss="modal" style="display:none"></button>
+            <button type="submit" [disabled]="!formAgregarFacebook.valid" class="btn btn-primary" >Agregar</button>
+            <button id="btnAgregarFacebook" data-dismiss="modal" style="display:none"></button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+<!-- Fin Modal Facebook-->
 
+<!-- Modal Twitter -->
 <div class="modal fade" id="twitter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa- mr-2" aria-hidden="true"></i>Cuentas Twitter</h5>
+      <div class="modal-header bg-twitter text-white">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-twitter mr-2" aria-hidden="true"></i>Cuentas Twitter</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="formAgregar" (ngSubmit)="AgregarFacebook()">
+        <form [formGroup]="formAgregarTwitter" (ngSubmit)="AgregarTwitter()">
           <div class="form-group">
             <label for="recipient-name">Url:</label>
             <input type="text" class="form-control" id="recipient-name" placeholder="Ej: www.twitter.com/mi-cuenta "
-              formControlName="urlFacebook">
-            <div *ngIf="!formAgregar.get('urlFacebook').valid && formAgregar.get('urlFacebook').touched">
+              formControlName="urlTwitter">
+            <div *ngIf="!formAgregarTwitter.get('urlTwitter').valid && formAgregarTwitter.get('urlTwitter').touched">
               <span class="text-danger">Debe ingresar url</span>
             </div>
           </div>
-          <div class="form-group">
-
-
-          </div>
           <div class="info mb-2">
-            <button type="submit" [disabled]="!formAgregar.valid" class="btn btn-primary">Agregar</button>
-            <button id="btnAgregar" data-dismiss="modal" style="display:none"></button>
+            <button type="submit" [disabled]="!formAgregarTwitter.valid" class="btn btn-primary">Agregar</button>
+            <button id="btnAgregarTwitter" data-dismiss="modal" style="display:none"></button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+<!--Fin Modal Twitter -->
 
+<!-- Modal radio Linea -->
 <div class="modal fade" id="radioLinea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa- mr-2" aria-hidden="true"></i>Ingrese datos de
+      <div class="modal-header bg-radioEstacion text-white">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-soundcloud mr-2" aria-hidden="true"></i>Ingrese datos de
           la estación</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="formAgregarRadio" (ngSubmit)="AgregarFacebook()">
+        <form [formGroup]="formAgregarRadio" (ngSubmit)="AgregarRadioLinea()">
           <div class="form-group">
             <label for="recipient-name">Titulo:</label>
             <input type="text" class="form-control" id="recipient-name" placeholder="Ej: www.twitter.com/mi-cuenta "
-              formControlName="titulo">
-            <div *ngIf="!formAgregar.get('titulo').valid && formAgregar.get('titulo').touched">
+              appLettersChar formControlName="titulo">
+            <div *ngIf="!formAgregarRadio.get('titulo').valid && formAgregarRadio.get('titulo').touched">
               <span class="text-danger">Debe ingresar url</span>
             </div>
           </div>
           <div class="form-group">
             <label for="recipient-name">Descripción:</label>
             <input type="text" class="form-control" id="recipient-name" placeholder="Ej: www.twitter.com/mi-cuenta "
-              formControlName="descripcion">
-            <div *ngIf="!formAgregar.get('descripcion').valid && formAgregar.get('descripcion').touched">
+              appLettersChar formControlName="descripcion">
+            <div *ngIf="!formAgregarRadio.get('descripcion').valid && formAgregarRadio.get('descripcion').touched">
               <span class="text-danger">Debe ingresar url</span>
             </div>
           </div>
           <div class="form-group">
             <label for="recipient-name">Url:</label>
             <input type="text" class="form-control" id="recipient-name" placeholder="Ej: www.twitter.com/mi-cuenta "
-              formControlName="urlFacebook">
-            <div *ngIf="!formAgregar.get('urlFacebook').valid && formAgregar.get('urlFacebook').touched">
+              formControlName="urlRadio">
+            <div *ngIf="!formAgregarRadio.get('urlRadio').valid && formAgregarRadio.get('urlRadio').touched">
               <span class="text-danger">Debe ingresar url</span>
             </div>
           </div>
           <div class="info mb-2">
-            <button type="submit" [disabled]="!formAgregar.valid" class="btn btn-primary">Agregar</button>
-            <button id="btnAgregar" data-dismiss="modal" style="display:none"></button>
+            <button type="submit" [disabled]="!formAgregarRadio.valid" class="btn btn-primary">Agregar</button>
+            <button id="btnAgregarRadio" data-dismiss="modal" style="display:none"></button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+<!--Fin Modal radio Linea -->
+
+<!-- Modal Youtube-->
+<div class="modal fade" id="youtube" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-youtube text-white">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-youtube mr-2" aria-hidden="true"></i>Canales
+          Youtube</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formAgregarYoutube" (ngSubmit)="AgregarYoutube()">
+          <div class="form-group">
+            <label for="recipient-name">Canal de Youtube:</label>
+            <input type="text" class="form-control" [class.is-invalid]="!formAgregarYoutube.get('urlYoutube').valid && formAgregarYoutube.get('urlYoutube').touched"
+              id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="urlYoutube">
+            <div *ngIf="!formAgregarYoutube.get('urlYoutube').valid && formAgregarYoutube.get('urlYoutube').touched">
+              <span class="text-danger">Debe ingresar url</span>
+            </div>
+          </div>
+          <div class="info mb-2">
+            <button type="submit" [disabled]="!formAgregarYoutube.valid" class="btn btn-primary">Agregar</button>
+            <button id="btnAgregarYoutube" data-dismiss="modal" style="display:none"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal Youtube-->
+
+<!-- Modal Youtube-->
+<div class="modal fade" id="usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-usuario text-white">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-user mr-2" aria-hidden="true"></i>Ingrese sus datos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formAgregarUsuario" (ngSubmit)="AgregarUsuario()">
+          <div class="form-group">
+            <label for="recipient-name">Nombre:</label>
+            <input type="text" class="form-control" [class.is-invalid]="!formAgregarUsuario.get('nombre').valid && formAgregarUsuario.get('nombre').touched"
+            appLettersChar id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="nombre">
+            <div *ngIf="!formAgregarUsuario.get('nombre').valid && formAgregarUsuario.get('nombre').touched">
+              <span class="text-danger">Debe ingresar nombre</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name">Contacto:</label>
+            <input type="text" class="form-control" [class.is-invalid]="!formAgregarUsuario.get('contacto').valid && formAgregarUsuario.get('contacto').touched"
+            appPhoneChar id="recipient-name" placeholder="Ej: +56999999999" formControlName="contacto">
+            <div *ngIf="!formAgregarUsuario.get('contacto').valid && formAgregarUsuario.get('contacto').touched">
+              <span class="text-danger">Debe ingresar contacto</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name">Email:</label>
+            <input type="text" class="form-control" [class.is-invalid]="!formAgregarUsuario.get('email').valid && formAgregarUsuario.get('email').touched"
+              id="recipient-name" placeholder="Ej: tu-correo@correo.cl " pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" formControlName="email">
+            <div *ngIf="!formAgregarUsuario.get('email').valid && formAgregarUsuario.get('email').touched">
+              <span class="text-danger">Debe ingresar email</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name">Dirección:</label>
+            <input type="text" class="form-control" [class.is-invalid]="!formAgregarUsuario.get('direccion').valid && formAgregarUsuario.get('direccion').touched"
+            appLettersChar id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="direccion">
+            <div *ngIf="!formAgregarUsuario.get('direccion').valid && formAgregarUsuario.get('direccion').touched">
+              <span class="text-danger">Debe ingresar dirección</span>
+            </div>
+          </div>
+          <div class="info mb-2">
+            <button type="submit" [disabled]="!formAgregarUsuario.valid" class="btn btn-primary">Agregar</button>
+            <button id="btnAgregarUsuario" data-dismiss="modal" style="display:none"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal Youtube-->
+
+
+<!-- Modal Youtube-->
+<div class="modal fade" id="googleForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-google text-white">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-google mr-2" aria-hidden="true"></i>Formulario Google</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formAgregarGoogle" (ngSubmit)="AgregarForm()">
+          <div class="form-group">
+            <label for="recipient-name">Url:</label>
+            <input type="text" class="form-control" [class.is-invalid]="!formAgregarGoogle.get('urlGoogle').valid && formAgregarGoogle.get('urlGoogle').touched"
+              id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="urlGoogle">
+            <div *ngIf="!formAgregarGoogle.get('urlGoogle').valid && formAgregarGoogle.get('urlGoogle').touched">
+              <span class="text-danger">Debe ingresar url</span>
+            </div>
+          </div>
+          <div class="info mb-2 ">
+            <button type="submit" [disabled]="!formAgregarGoogle.valid" class="btn btn-primary">Agregar</button>
+            <button id="btnAgregarGoogle" data-dismiss="modal" style="display:none"></button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer text-left">
+        <p>aun no tienes Form Google? <a href="https://docs.google.com/forms/u/0/">crea Fom Google
+        </a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal Youtube-->
+
+<!-- Modal Youtube-->
+<div class="modal fade" id="wordpress" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-wordpress text-white">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-wordpress mr-2" aria-hidden="true"></i>Agregar sitio Web</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formAgregarWordpress" (ngSubmit)="AgregarWordpress()">
+          <div class="form-group">
+            <label for="recipient-name">Url:</label>
+            <input type="text" class="form-control" [class.is-invalid]="!formAgregarWordpress.get('urlWordpress').valid && formAgregarWordpress.get('urlWordpress').touched"
+              id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="urlWordpress">
+            <div *ngIf="!formAgregarWordpress.get('urlWordpress').valid && formAgregarWordpress.get('urlWordpress').touched">
+              <span class="text-danger">Debe ingresar url</span>
+            </div>
+          </div>
+          <div class="info mb-2 ">
+            <button type="submit" [disabled]="!formAgregarWordpress.valid" class="btn btn-primary">Agregar</button>
+            <button id="btnAgregarWorpress" data-dismiss="modal" style="display:none"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal Youtube-->

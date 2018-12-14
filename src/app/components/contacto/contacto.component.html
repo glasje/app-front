@@ -1,40 +1,77 @@
- <!-- START CONTACT DESIGN AREA -->
- <section id="contact" class="contact-area section-padding">
-  <div class="container">
-      <div class="row">
-          <div class="col-sm-12">
-              <div class="section-title">
-                  <h2>Cuéntanos algo!</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
-              </div>
-          </div>
-      </div>
-      <div class="row contact-form-design-area wow fadeInUp">
-          <div class="col-md-8 col-md-offset-2">
-              <!-- START CONTACT FORM DESIGN AREA -->
-              <div class="contact-form">
-                  <form id="contact-form" method="post" enctype="multipart/form-data">
-                      <div class="row">
-                          <div class="form-group col-md-12">
-                              <input type="text" name="name" class="form-control" id="first-name" placeholder="Nombre" required="required">
-                          </div>
-                          <div class="form-group col-md-12">
-                              <input type="email" name="email" class="form-control" id="email" placeholder="Email" required="required">
-                          </div>
-                          <div class="form-group col-md-12">
-                              <textarea rows="6" name="message" class="form-control" id="description" placeholder="Mensaje" required="required"></textarea>
-                          </div>
-                          <div class="col-md-12 text-center">
-                              <div class="actions">
-                                  <input type="submit" value="Enviar mensaje" name="submit" id="submitButton" class="btn btn-lg btn-contact-bg" title="Submit Your Message!">
+
+        <!-- START CONTACT DESIGN AREA -->
+       
+            <div class="container mt-4 mb-4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="section-title">
+                            <h2>Cuéntanos algo!</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 m-auto">
+                        <form [formGroup]="formAgregarRadio" (ngSubmit)="AgregarRadioLinea()">
+                            <div class="form-group">
+                              <input type="text" class="form-control" id="recipient-name" placeholder="Nombre " appLettersChar
+                                formControlName="titulo">
+                              <div *ngIf="!formAgregarRadio.get('titulo').valid && formAgregarRadio.get('titulo').touched">
+                                <span class="text-danger">Debe ingresar url</span>
                               </div>
-                          </div>
-                      </div>
-                  </form>
-              </div>
-              <!-- / END CONTACT FORM DESIGN AREA -->
-          </div>
-      </div>
-  </div>
-</section>
-<!-- / END CONTACT DESIGN AREA -->
+                            </div>
+                            <div class="form-group">
+                              <input type="text" class="form-control" id="recipient-name" placeholder="Email " appLettersChar
+                                formControlName="descripcion">
+                              <div *ngIf="!formAgregarRadio.get('descripcion').valid && formAgregarRadio.get('descripcion').touched">
+                                <span class="text-danger">Debe ingresar url</span>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="6" name="message" class="form-control" id="description"
+                                placeholder="Mensaje" required="required"></textarea>
+                              <div *ngIf="!formAgregarRadio.get('urlRadio').valid && formAgregarRadio.get('urlRadio').touched">
+                                <span class="text-danger">Debe ingresar url</span>
+                              </div>
+                            </div>
+                            <div class="text-center actions">
+                              <button type="submit" [disabled]="!formAgregarRadio.valid" class="btn btn-lg btn-contact-bg">Enviar mensaje</button>
+                            
+                            </div>
+                          </form>
+                    </div>
+                </div>
+                
+            <!-- <div class="row contact-form-design-area wow fadeInUp">
+                    <div class="col-md-8 col-md-offset-2">
+                         START CONTACT FORM DESIGN AREA 
+                        <div class="contact-form">
+                            <form id="contact-form" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <input type="text" name="name" class="form-control" id="first-name" placeholder="Nombre"
+                                            required="required">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email"
+                                            required="required">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <textarea rows="6" name="message" class="form-control" id="description"
+                                            placeholder="Mensaje" required="required"></textarea>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <div class="actions">
+                                            <input type="submit" value="Enviar mensaje" name="submit" id="submitButton"
+                                                class="btn btn-lg btn-contact-bg" title="Submit Your Message!">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        / END CONTACT FORM DESIGN AREA 
+                    </div>
+                </div>  -->
+            </div>
+      
+        <!-- / END CONTACT DESIGN AREA -->
