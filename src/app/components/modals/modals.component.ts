@@ -16,6 +16,8 @@ export class ModalsComponent implements OnInit {
   listaDatos = [];
   formAgregarGoogle: FormGroup;
   formAgregarWordpress: FormGroup;
+  formAgregarHtml: FormGroup;
+  formAgregarPdf: FormGroup;
   constructor(
     private _configurarApps: ConfigurarAppsService
   ) {
@@ -35,7 +37,7 @@ export class ModalsComponent implements OnInit {
         validators: [Validators.required, Validators.pattern(reg)]
       }),
       nombreTwitter: new FormControl(null, {
-        validators: [Validators.required, Validators.pattern(reg)]
+        validators: [Validators.required]
       })
     });
 
@@ -45,7 +47,7 @@ export class ModalsComponent implements OnInit {
         validators: [Validators.required, Validators.pattern(reg)]
       }),
       nombreYoutube: new FormControl(null, {
-        validators: [Validators.required, Validators.pattern(reg)]
+        validators: [Validators.required]
       })
     });
 
@@ -54,7 +56,7 @@ export class ModalsComponent implements OnInit {
         validators: [Validators.required, Validators.pattern(reg)]
       }),
       nombreGoogle: new FormControl(null, {
-        validators: [Validators.required, Validators.pattern(reg)]
+        validators: [Validators.required]
       })
     });
 
@@ -63,7 +65,7 @@ export class ModalsComponent implements OnInit {
         validators: [Validators.required, Validators.pattern(reg)]
       }),
       nombreWordpress: new FormControl(null, {
-        validators: [Validators.required, Validators.pattern(reg)]
+        validators: [Validators.required]
       })
     });
     // Form agregar radio
@@ -78,7 +80,7 @@ export class ModalsComponent implements OnInit {
         validators: [Validators.required, Validators.pattern(reg)]
       }),
       nombreRadio: new FormControl(null, {
-        validators: [Validators.required, Validators.pattern(reg)]
+        validators: [Validators.required]
       })
     });
 
@@ -97,6 +99,40 @@ export class ModalsComponent implements OnInit {
         validators: [Validators.required]
       })
     });
+    // Form agregar usuario
+    this.formAgregarHtml = new FormGroup({
+      nombreHtml: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+       docHtml: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      /*letra: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      tamano: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      color: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      colorFondo: new FormControl(null, {
+        validators: [Validators.required]
+      }), */
+    });
+
+    // Form agregar usuario
+    this.formAgregarPdf = new FormGroup({
+      nombrePdf: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      docPdf: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      nombreDoc: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+    });
     this.listaDatos = [];
   }
 
@@ -109,7 +145,7 @@ export class ModalsComponent implements OnInit {
 
       let url = this.formAgregarFacebook.get('urlFacebook').value;
       let posicion = url.indexOf('m/', 0);
-      let id = url.substring(posicion+2, url.length);
+      let id = url.substring(posicion + 2, url.length);
       console.log('id', id);
 
       let facebook = {
@@ -133,8 +169,18 @@ export class ModalsComponent implements OnInit {
 
   AgregarForm() {
     if (this.formAgregarGoogle.valid) {
+
       let url = this.formAgregarGoogle.get('urlGoogle').value;
-      this._configurarApps.AgregarDatos(url, 'google');
+
+      let google = {
+        "id": "7",
+        "nombre": this.formAgregarGoogle.get('nombreGoogle').value,
+        "descripcion": "",
+        "configuracion": {
+          "url": url
+        }
+      }
+      this._configurarApps.AgregarDatos(google, 'google');
       document.getElementById('btnAgregarGoogle').click();
       this.formAgregarGoogle.reset();
     } else {
@@ -147,7 +193,17 @@ export class ModalsComponent implements OnInit {
   AgregarTwitter() {
     if (this.formAgregarTwitter.valid) {
       let url = this.formAgregarTwitter.get('urlTwitter').value;
-      this._configurarApps.AgregarDatos(url, 'twitter');
+      let posicion = url.indexOf('m/', 0);
+      let id = url.substring(posicion + 2, url.length);
+      let twitter = {
+        "id": "5",
+        "nombre": this.formAgregarTwitter.get('nombreTwitter').value,
+        "descripcion": "",
+        "configuracion": {
+          "id": id
+        }
+      }
+      this._configurarApps.AgregarDatos(twitter, 'twitter');
       document.getElementById('btnAgregarTwitter').click();
       this.formAgregarTwitter.reset();
     } else {
@@ -159,17 +215,18 @@ export class ModalsComponent implements OnInit {
 
   AgregarRadioLinea() {
     if (this.formAgregarRadio.valid) {
-      let titulo = this.formAgregarRadio.get('titulo').value;
-      let descripcion = this.formAgregarRadio.get('descripcion').value;
-      let url = this.formAgregarRadio.get('urlRadio').value;
+
       let radio = {
-        titulo: '',
-        descripcion: '',
-        url: ''
+        "id": "3",
+        "nombre": this.formAgregarRadio.get('nombreRadio').value,
+        "descripcion": "",
+        "configuracion": {
+          "url": this.formAgregarRadio.get('urlRadio').value,
+          "titulo": this.formAgregarRadio.get('titulo').value,
+          "descripcion": this.formAgregarRadio.get('descripcion').value
+        }
       };
-      radio.titulo = titulo;
-      radio.descripcion = descripcion;
-      radio.url = url;
+
       this._configurarApps.AgregarDatos(radio, 'radio');
       document.getElementById('btnAgregarRadio').click();
       this.formAgregarRadio.reset();
@@ -183,7 +240,18 @@ export class ModalsComponent implements OnInit {
   AgregarYoutube() {
     if (this.formAgregarYoutube.valid) {
       let url = this.formAgregarYoutube.get('urlYoutube').value;
-      this._configurarApps.AgregarDatos(url, 'youtube');
+      let posicion = url.indexOf('m/', 0);
+      let id = url.substring(posicion + 2, url.length);
+      let youtube = {
+        "id": "9",
+        "nombre": this.formAgregarYoutube.get('nombreYoutube').value,
+        "descripcion": "",
+        "configuracion": {
+          "id": id
+        }
+      }
+
+      this._configurarApps.AgregarDatos(youtube, 'youtube');
       document.getElementById('btnAgregarYoutube').click();
       this.formAgregarYoutube.reset();
     } else {
@@ -195,8 +263,16 @@ export class ModalsComponent implements OnInit {
 
   AgregarWordpress() {
     if (this.formAgregarWordpress.valid) {
-      let url = this.formAgregarWordpress.get('urlWordpress').value;
-      this._configurarApps.AgregarDatos(url, 'wordpress');
+
+      let web = {
+        "id": "8",
+        "nombre": this.formAgregarWordpress.get('nombreWordpress').value,
+        "descripcion": "",
+        "configuracion": {
+          "url": this.formAgregarWordpress.get('urlWordpress').value
+        }
+      }
+      this._configurarApps.AgregarDatos(web, 'wordpress');
       document.getElementById('btnAgregarWorpress').click();
       this.formAgregarWordpress.reset();
     } else {
@@ -206,21 +282,92 @@ export class ModalsComponent implements OnInit {
     }
   }
 
-
   AgregarUsuario() {
     if (this.formAgregarUsuario.valid) {
+
       let usuario = {
-        nombre: this.formAgregarUsuario.get('nombre').value,
-        contacto: this.formAgregarUsuario.get('contacto').value,
-        email: this.formAgregarUsuario.get('email').value,
-        direccion: this.formAgregarUsuario.get('direccion').value
-      }
+        "id": "6",
+        "nombre": "Contacto",
+        "descripcion": "",
+        "configuracion": {
+          "nombre": this.formAgregarUsuario.get('nombre').value,
+          "telefono": this.formAgregarUsuario.get('contacto').value,
+          "direccion": this.formAgregarUsuario.get('direccion').value,
+          "email": this.formAgregarUsuario.get('email').value
+        }
+      };
+
       this._configurarApps.AgregarDatos(usuario, 'contacto');
       document.getElementById('btnAgregarUsuario').click();
       this.formAgregarUsuario.reset();
     } else {
       Object.keys(this.formAgregarUsuario.controls).forEach(key => {
         this.formAgregarUsuario.get(key).markAsTouched();
+      });
+    }
+  }
+
+  AgregarHtml() {
+    if (this.formAgregarHtml.valid) {
+
+      let html = {
+        "id" : "1",
+        "nombre" : this.formAgregarHtml.get('nombreHtml').value,
+        "descripcion" : "",
+        "configuracion" : {
+          "html" : this.formAgregarHtml.get('docHtml').value
+        },
+        "estilo": {
+          "letra" : "",
+          "tamano_letra" : "",
+          "color" : "",
+          "color_fondo" : "",
+  
+        }
+      };
+
+      this._configurarApps.AgregarDatos(html, 'html');
+      document.getElementById('btnAgregarHtml').click();
+      this.formAgregarHtml.reset();
+    } else {
+      Object.keys(this.formAgregarHtml.controls).forEach(key => {
+        this.formAgregarHtml.get(key).markAsTouched();
+      });
+    }
+  }
+  onFileChange(event,controlForm){
+    
+      let file:File = event.target.files[0];
+      let myReader:FileReader = new FileReader();
+      let valor
+      myReader.onloadend = (e) => {
+        let archivo =myReader.result
+        console.log('file',myReader.result)
+        controlForm.setValue(archivo);
+        console.log('control',controlForm);
+      }
+      myReader.readAsDataURL(file);
+    }
+  
+  AgregarPdf() {
+    if (this.formAgregarPdf.valid) {
+
+      let pdf = {
+        "id" : "2",
+        "nombre" : this.formAgregarPdf.get('nombrePdf').value,
+        "descripcion" : "",
+        "configuracion" : {
+          "archivo" : this.formAgregarPdf.get('docPdf').value,
+          "nombre_archivo" : this.formAgregarPdf.get('nombreDoc').value
+        }
+      };
+
+      this._configurarApps.AgregarDatos(pdf, 'pdf');
+      document.getElementById('btnAgregarUsuario').click();
+      this.formAgregarPdf.reset();
+    } else {
+      Object.keys(this.formAgregarPdf.controls).forEach(key => {
+        this.formAgregarPdf.get(key).markAsTouched();
       });
     }
   }
