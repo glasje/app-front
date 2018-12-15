@@ -4,9 +4,17 @@ background-image: url("/assets/images/phone2.png") ;
 background-repeat: no-repeat;
 
 }
+.imagen {
+    background-image: url("/assets/images/phone2.png") ;
+    background-repeat: no-repeat;
+    height: 631px;
+}
 .iphone{
     
     background-image: url("/assets/images/iphone.png") ;
     background-repeat: no-repeat;
     
     }
+.btn-crear-app {
+    margin-top: 1rem;
+}
