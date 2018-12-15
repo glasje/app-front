@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigurarAppsService } from 'src/app/services/configurar-apps.service';
 import { DatosApps } from 'src/app/models/DatosApps';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ConfigurarApps } from 'src/app/models/ConfiguararApps';
 
 @Component({
   selector: 'app-configuracion-apps',
@@ -10,11 +12,22 @@ import { DatosApps } from 'src/app/models/DatosApps';
 export class ConfiguracionAppsComponent implements OnInit {
 
   listaDatos: DatosApps;
+  telefono: boolean;
+  tipoTelefono: any;
+  formCrearApps: FormGroup;
 
   constructor(
     private _configurarApps: ConfigurarAppsService
   ) {
-    this.listaDatos =new DatosApps();
+    this.listaDatos = new DatosApps();
+    this.telefono = true;
+    this.tipoTelefono = 'Android';
+
+    this.formCrearApps = new FormGroup({
+      nombreApps: new FormControl(null, {
+        validators: [Validators.required]
+      })
+    });
   }
 
   ngOnInit() {
@@ -28,6 +41,32 @@ export class ConfiguracionAppsComponent implements OnInit {
         console.log('lista', this.listaDatos);
       }
     );
+  }
+
+  CambiarTelefono(value) {
+    this.tipoTelefono = value;
+    this.telefono = value === 'Iphone' ? false : true;
+
+  }
+  CrearApps() {
+    if (this.formCrearApps.valid) {
+      ConfigurarApps.nombre = this.formCrearApps.get('nombreApps').value;
+      ConfigurarApps.fecha_creacion = new Date().toISOString().substring(0, 10);
+      ConfigurarApps.autor = '';
+      ConfigurarApps.modulos.push(this.listaDatos.listaFacebook);
+      ConfigurarApps.modulos.push(this.listaDatos.listaGoogle);
+      ConfigurarApps.modulos.push(this.listaDatos.listaRadio);
+      ConfigurarApps.modulos.push(this.listaDatos.listaTwitter);
+      ConfigurarApps.modulos.push(this.listaDatos.listaWordPress);
+      ConfigurarApps.modulos.push(this.listaDatos.listaYoutube);
+
+      console.log('objeto', ConfigurarApps);
+      this.formCrearApps.reset();
+    } else {
+      Object.keys(this.formCrearApps.controls).forEach(key => {
+        this.formCrearApps.get(key).markAsTouched();
+      });
+    }
   }
 
 }

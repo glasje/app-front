@@ -11,5 +11,11 @@ export class PreviewPhoneComponent implements OnInit {
 
   ngOnInit() {
   }
+  openSideBar() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  closeSideBar(){
+    document.getElementById("mySidenav").style.width = "0";
+  }
 
 }
