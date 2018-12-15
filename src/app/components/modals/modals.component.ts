@@ -17,18 +17,24 @@ export class ModalsComponent implements OnInit {
   formAgregarGoogle: FormGroup;
   formAgregarWordpress: FormGroup;
   constructor(
-    private _conigurarApps: ConfigurarAppsService
+    private _configurarApps: ConfigurarAppsService
   ) {
     const reg = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
     // Form agregar red social
     this.formAgregarFacebook = new FormGroup({
       urlFacebook: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreFacebook: new FormControl(null, {
+        validators: [Validators.required]
       })
     });
     // Form agregar red social
     this.formAgregarTwitter = new FormGroup({
       urlTwitter: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreTwitter: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
       })
     });
@@ -37,17 +43,26 @@ export class ModalsComponent implements OnInit {
     this.formAgregarYoutube = new FormGroup({
       urlYoutube: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreYoutube: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
       })
     });
 
     this.formAgregarGoogle = new FormGroup({
       urlGoogle: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreGoogle: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
       })
     });
 
     this.formAgregarWordpress = new FormGroup({
       urlWordpress: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreWordpress: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
       })
     });
@@ -60,6 +75,9 @@ export class ModalsComponent implements OnInit {
         validators: [Validators.required]
       }),
       urlRadio: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreRadio: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
       })
     });
@@ -88,8 +106,22 @@ export class ModalsComponent implements OnInit {
 
   AgregarFacebook() {
     if (this.formAgregarFacebook.valid) {
+
       let url = this.formAgregarFacebook.get('urlFacebook').value;
-      this._conigurarApps.AgregarDatos(url, 'facebook');
+      let posicion = url.indexOf('m/', 0);
+      let id = url.substring(posicion+2, url.length);
+      console.log('id', id);
+
+      let facebook = {
+        "id": "4",
+        "nombre": this.formAgregarFacebook.get('nombreFacebook').value,
+        "descripcion": "",
+        "configuracion": {
+          "id": id
+        }
+      };
+
+      this._configurarApps.AgregarDatos(facebook, 'facebook');
       document.getElementById('btnAgregarFacebook').click();
       this.formAgregarFacebook.reset();
     } else {
@@ -102,7 +134,7 @@ export class ModalsComponent implements OnInit {
   AgregarForm() {
     if (this.formAgregarGoogle.valid) {
       let url = this.formAgregarGoogle.get('urlGoogle').value;
-      this._conigurarApps.AgregarDatos(url, 'google');
+      this._configurarApps.AgregarDatos(url, 'google');
       document.getElementById('btnAgregarGoogle').click();
       this.formAgregarGoogle.reset();
     } else {
@@ -115,7 +147,7 @@ export class ModalsComponent implements OnInit {
   AgregarTwitter() {
     if (this.formAgregarTwitter.valid) {
       let url = this.formAgregarTwitter.get('urlTwitter').value;
-      this._conigurarApps.AgregarDatos(url, 'twitter');
+      this._configurarApps.AgregarDatos(url, 'twitter');
       document.getElementById('btnAgregarTwitter').click();
       this.formAgregarTwitter.reset();
     } else {
@@ -138,7 +170,7 @@ export class ModalsComponent implements OnInit {
       radio.titulo = titulo;
       radio.descripcion = descripcion;
       radio.url = url;
-      this._conigurarApps.AgregarDatos(radio, 'radio');
+      this._configurarApps.AgregarDatos(radio, 'radio');
       document.getElementById('btnAgregarRadio').click();
       this.formAgregarRadio.reset();
     } else {
@@ -151,7 +183,7 @@ export class ModalsComponent implements OnInit {
   AgregarYoutube() {
     if (this.formAgregarYoutube.valid) {
       let url = this.formAgregarYoutube.get('urlYoutube').value;
-      this._conigurarApps.AgregarDatos(url, 'youtube');
+      this._configurarApps.AgregarDatos(url, 'youtube');
       document.getElementById('btnAgregarYoutube').click();
       this.formAgregarYoutube.reset();
     } else {
@@ -164,7 +196,7 @@ export class ModalsComponent implements OnInit {
   AgregarWordpress() {
     if (this.formAgregarWordpress.valid) {
       let url = this.formAgregarWordpress.get('urlWordpress').value;
-      this._conigurarApps.AgregarDatos(url, 'wordpress');
+      this._configurarApps.AgregarDatos(url, 'wordpress');
       document.getElementById('btnAgregarWorpress').click();
       this.formAgregarWordpress.reset();
     } else {
@@ -183,7 +215,7 @@ export class ModalsComponent implements OnInit {
         email: this.formAgregarUsuario.get('email').value,
         direccion: this.formAgregarUsuario.get('direccion').value
       }
-      this._conigurarApps.AgregarDatos(usuario, 'contacto');
+      this._configurarApps.AgregarDatos(usuario, 'contacto');
       document.getElementById('btnAgregarUsuario').click();
       this.formAgregarUsuario.reset();
     } else {
