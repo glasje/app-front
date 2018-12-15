@@ -111,7 +111,7 @@ fieldset {
     text-transform: capitalize;
     margin: 0;
     font-weight: 400;
-    font-style: italic;
+    font-style: 'Roboto';
 }
 
 a.read-more {
@@ -475,18 +475,16 @@ a.read-more:hover {
 
 .single-service {
     margin-top: 30px;
-    padding: 30px;
+    padding: 23px;
     text-align: center;
     -webkit-transition: .3s;
     transition: .3s;
 }
-
 .service-active {
     box-shadow: 0px 0px 70px rgba(29, 24, 24, 0.09);
     -webkit-transition: .3s;
     transition: .3s;
 }
-
 .single-service h4 {
     font-size: 22px;
     margin-top: 20px;
@@ -494,12 +492,10 @@ a.read-more:hover {
     text-transform: capitalize;
     color: #333;
 }
-
 .service-icon i {
     font-size: 40px;
     color: #000;
 }
-
 .single-service p {
     margin-bottom: 0;
     color: #333;

@@ -1,6 +1,8 @@
-.imagen{
-    
-background-image: url("/assets/images/phone2.png") ;
-background-repeat: no-repeat;
-
+.imagen {
+    background-image: url("/assets/images/phone2.png") ;
+    background-repeat: no-repeat;
+    height: 631px;
+}
+.btn-crear-app {
+    margin-top: 1rem;
 }
