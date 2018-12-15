@@ -16,7 +16,7 @@ import { SelectModulesComponent } from './components/select-modules/select-modul
 import { ListModulesComponent } from './components/list-modules/list-modules.component';
 import { PreviewPhoneComponent } from './components/preview-phone/preview-phone.component';
 // DIRECTIVES
-import { LettersCharDirective, PhoneCharDirective} from './directives';
+import { LettersCharDirective, PhoneCharDirective } from './directives';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,9 @@ import { LettersCharDirective, PhoneCharDirective} from './directives';
     ConfiguracionAppsComponent,
     SelectModulesComponent,
     ListModulesComponent,
-    PreviewPhoneComponent
+    PreviewPhoneComponent, 
+    PhoneCharDirective, 
+    LettersCharDirective
   ],
   imports: [
     BrowserModule,

@@ -16,10 +16,21 @@ export class ConfigurarAppsService {
     this.listaDatos.listaYoutube = [];
     this.listaDatos.listaGoogle = [];
     this.listaDatos.listaWordPress = [];
+    this.listaDatos.listaHtml=[];
+    this.listaDatos.listaPdf=[];
   }
 
   AgregarDatos(datos, tipoLista) {
     switch (tipoLista) {
+      
+      case ('html'): {
+        this.listaDatos.listaHtml.push(datos);
+        break;
+      }
+      case ('pdf'): {
+        this.listaDatos.listaPdf.push(datos);
+        break;
+      }
       case ('facebook'): {
         this.listaDatos.listaFacebook.push(datos);
         break;

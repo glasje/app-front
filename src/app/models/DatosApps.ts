@@ -6,5 +6,7 @@ export class DatosApps {
     public contactoUsuario: any;
     public listaGoogle: any[];
     public listaWordPress: any[];
+    public listaHtml: any;
+    public listaPdf: any;
     constructor() { }
 }
