@@ -1,6 +1,12 @@
-.imagen{
+.android{
     
 background-image: url("/assets/images/phone2.png") ;
 background-repeat: no-repeat;
 
 }
+.iphone{
+    
+    background-image: url("/assets/images/iphone.png") ;
+    background-repeat: no-repeat;
+    
+    }

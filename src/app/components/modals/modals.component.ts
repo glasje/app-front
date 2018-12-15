@@ -24,11 +24,17 @@ export class ModalsComponent implements OnInit {
     this.formAgregarFacebook = new FormGroup({
       urlFacebook: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreFacebook: new FormControl(null, {
+        validators: [Validators.required]
       })
     });
     // Form agregar red social
     this.formAgregarTwitter = new FormGroup({
       urlTwitter: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreTwitter: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
       })
     });
@@ -37,17 +43,26 @@ export class ModalsComponent implements OnInit {
     this.formAgregarYoutube = new FormGroup({
       urlYoutube: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreYoutube: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
       })
     });
 
     this.formAgregarGoogle = new FormGroup({
       urlGoogle: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreGoogle: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
       })
     });
 
     this.formAgregarWordpress = new FormGroup({
       urlWordpress: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreWordpress: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
       })
     });
@@ -60,6 +75,9 @@ export class ModalsComponent implements OnInit {
         validators: [Validators.required]
       }),
       urlRadio: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(reg)]
+      }),
+      nombreRadio: new FormControl(null, {
         validators: [Validators.required, Validators.pattern(reg)]
       })
     });
@@ -88,8 +106,22 @@ export class ModalsComponent implements OnInit {
 
   AgregarFacebook() {
     if (this.formAgregarFacebook.valid) {
+
       let url = this.formAgregarFacebook.get('urlFacebook').value;
-      this._conigurarApps.AgregarDatos(url, 'facebook');
+      let posicion = url.indexOf('m/', 0);
+      let id = url.substring(posicion+2, url.length);
+      console.log('id', id);
+
+      let facebook = {
+        "id": "4",
+        "nombre": this.formAgregarFacebook.get('nombreFacebook').value,
+        "descripcion": "",
+        "configuracion": {
+          "id": id
+        }
+      };
+
+      this._conigurarApps.AgregarDatos(facebook, 'facebook');
       document.getElementById('btnAgregarFacebook').click();
       this.formAgregarFacebook.reset();
     } else {
