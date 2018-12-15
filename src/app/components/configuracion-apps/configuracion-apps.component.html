@@ -8,21 +8,26 @@
                     <p>Escoge los modulos que quieras para tu app y agregalas!</p>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="recipient-name">Introduce el nombre de tu App.</label>
-                    <input type="text" class="form-control" id="recipient-name" placeholder="App ID">
+        </div><!--  -->
+        <form [formGroup]="formCrearApps" (ngSubmit)="CrearApps()">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="recipient-name">Introduce el nombre de tu App.</label>
+                        <input type="text" class="form-control" id="recipient-name" formControlName="nombreApps"
+                            placeholder="App ID">
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-offset-4 col-md-4">
+                    <button id="btnCrear" type="submit" class="btn btn-success btn-lg col-md-12 btn-crear-app">Crear
+                        App</button>
                 </div>
             </div>
-            <div class="col-md-4">
-                
-            </div>
-            <div class="col-md-offset-4 col-md-4">
-                <button id="btnCrear" type="button" class="btn btn-success btn-lg col-md-12 btn-crear-app">Crear App</button>
-            </div>
-        </div>
+
+        </form>
 
         <div class="row">
             <div class="col-md-4 imagen">
