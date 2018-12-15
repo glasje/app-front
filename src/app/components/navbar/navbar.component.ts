@@ -18,6 +18,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   }
+  Home(){
+    this._router.navigate(['/Home']);
+  }
   CrearApps() {
     this.crearApps = false;
     this._router.navigate(['/ConfiguracionApps']);
