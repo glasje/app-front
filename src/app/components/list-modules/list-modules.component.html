@@ -1,15 +1,40 @@
+<style>
+    .black-header, .black-list{
+        background-color: #202020;
+        color:white;
+    }
+    .black-list:hover{
+        background-color: #202020bf;
+    }
+    .border-list{
+        border-bottom: 1px solid rgba(239, 231, 231, 0.15);
+    }
+    .cross-red{
+        color:red;
+        text-shadow: none;
+        opacity: 1;
+    }
+    .cross-red:hover{
+        color:#f8442abd !important;
+    }
+    .list-empty{
+        background-color: #2020208a;
+        color: white;
+    }
+
+</style>
+
+
 <div style="height: 100%; margin-top: 30px;">
     <div class="card" style="max-width: 20rem;">
         <!-- Card Header -->
-        <div class="card-header">
-        Lista de Caracteristicas App
+        <div class="card-header black-header border-list">
+            <h6>Características Agregadas</h6>
         </div>
         <!-- List Group -->
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">The Sun will come back <span class="close">×</span></li>
-          <li class="list-group-item">The Sun won't come back <span class="close">×</span></li>
-          <li class="list-group-item">It will have babies and spawn thousands more suns <span class="close">×</span></li>
-          <li class="list-group-item">Good night!<span class="close">×</span></li>
+        <ul class="list-group list-group-flush border-list">
+          <li class="list-group-item black-list">The Sun will come back <span class="close cross-red">×</span></li>
+          <li class="list-group-item list-empty">Aquí estarán tus características..</li>
         </ul>
     </div>
 </div>

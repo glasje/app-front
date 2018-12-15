@@ -30,7 +30,8 @@ import {
     ConfiguracionAppsComponent,
     ModalsComponent,
     ConfiguracionAppsComponent,
-    SelectModulesComponent
+    SelectModulesComponent,
+    ListModulesComponent
   ],
   imports: [
     BrowserModule,
