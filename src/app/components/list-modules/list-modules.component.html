@@ -35,8 +35,8 @@
         <ul class="list-group list-group-flush border-list">
           <li class="list-group-item black-list" *ngFor="let item of listaCaracteristicas">
             {{item.nombre}}<span class="close cross-red" (click)="EliminarModulos(item)">×</span>
-        </li>
-          <!-- <li class="list-group-item list-empty">Aquí estarán tus características..</li> -->
+          </li>
+          <li class="list-group-item list-empty" *ngIf="listaCaracteristicas.length == 0">Aquí estarán tus características..</li>
         </ul>
     </div>
 </div>

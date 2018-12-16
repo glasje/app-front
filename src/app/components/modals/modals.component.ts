@@ -167,8 +167,10 @@ export class ModalsComponent implements OnInit {
         "nombre": this.formAgregarFacebook.get('nombreFacebook').value,
         "descripcion": "",
         "configuracion": {
-          "id": id
+          "id": id,
+          'url': url
         }
+        
       };
 
       this._configurarApps.AgregarDatos(facebook, 'facebook');
@@ -214,8 +216,10 @@ export class ModalsComponent implements OnInit {
         "nombre": this.formAgregarTwitter.get('nombreTwitter').value,
         "descripcion": "",
         "configuracion": {
-          "id": id
+          "id": id,
+          'url': url
         }
+        
       }
       this._configurarApps.AgregarDatos(twitter, 'twitter');
       document.getElementById('btnAgregarTwitter').click();
@@ -261,7 +265,8 @@ export class ModalsComponent implements OnInit {
         "nombre": this.formAgregarYoutube.get('nombreYoutube').value,
         "descripcion": "",
         "configuracion": {
-          "id": id
+          "id": id,
+          'url': url
         }
       }
 
