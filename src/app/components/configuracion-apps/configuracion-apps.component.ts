@@ -15,6 +15,7 @@ export class ConfiguracionAppsComponent implements OnInit {
   telefono: boolean;
   tipoTelefono: any;
   formCrearApps: FormGroup;
+  modulo: boolean;
 
   constructor(
     private _configurarApps: ConfigurarAppsService
@@ -22,9 +23,12 @@ export class ConfiguracionAppsComponent implements OnInit {
     this.listaDatos = new DatosApps();
     this.telefono = true;
     this.tipoTelefono = 'Android';
-
+    this.modulo = false;
     this.formCrearApps = new FormGroup({
       nombreApps: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      autor: new FormControl(null, {
         validators: [Validators.required]
       })
     });
@@ -38,7 +42,19 @@ export class ConfiguracionAppsComponent implements OnInit {
     this._configurarApps.change.subscribe(
       data => {
         this.listaDatos = this._configurarApps.listaDatos;
-        console.log('lista', this.listaDatos);
+        console.log('lista', this.listaDatos.listaFacebook.length);
+   
+        this.modulo = this.listaDatos.contactoUsuario.length > 0 ? false : true;
+        this.modulo = this.listaDatos.listaFacebook.length > 0 ? false : true;
+        this.modulo = this.listaDatos.listaGoogle.length > 0 ? false : true;
+        this.modulo = this.listaDatos.listaHtml.length > 0 ? false : true;
+        this.modulo = this.listaDatos.listaPdf.length > 0 ? false : true;
+        this.modulo = this.listaDatos.listaRadio.length > 0 ? false : true;
+        this.modulo = this.listaDatos.listaTwitter.length > 0 ? false : true;
+        this.modulo = this.listaDatos.listaWordPress.length > 0 ? false : true;
+        this.modulo = this.listaDatos.listaYoutube.length > 0 ? false : true;
+
+        console.log('modulo',this.modulo)
       }
     );
   }

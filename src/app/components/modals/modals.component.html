@@ -1,9 +1,54 @@
 <!-- Modal html-->
+<div class="modal fade" id="imagenes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-html text-white">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-html5 mr-2" aria-hidden="true"></i>Ingrese
+          HTML</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formAgregarImagenes" (ngSubmit)="AgregarImagenes()">
+          <div class="input-group mb-3">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                (change)="onFileChange($event,formAgregarImagenes.controls['logo'])">
+              <label class="custom-file-label" for="inputGroupFile01">adjuntar logo</label>
+            </div>
+            
+          </div>
+          <div class="input-group mb-3">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                (change)="onFileChange($event,formAgregarImagenes.controls['splash'])">
+              <label class="custom-file-label" for="inputGroupFile01">adjuntar splash</label>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                (change)="onFileChange($event,formAgregarImagenes.controls['icono'])">
+              <label class="custom-file-label" for="inputGroupFile01">adjuntar icono</label>
+            </div>
+          </div>
+          <div class="info mb-2">
+            <button type="submit" [disabled]="!formAgregarImagenes.valid" class="btn btn-primary">Agregar</button>
+            <button id="btnAgregarImagenes" data-dismiss="modal" style="display:none"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal Facebook-->
+<!-- Modal html-->
 <div class="modal fade" id="html" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-facebook text-white">
-        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-facebook mr-2" aria-hidden="true"></i>Ingrese
+      <div class="modal-header bg-html text-white">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-html5 mr-2" aria-hidden="true"></i>Ingrese
           HTML</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -14,14 +59,15 @@
           <div class="form-group">
             <label for="recipient-name">Nombre Menú:</label>
             <input type="text" class="form-control" [class.is-invalid]="!formAgregarHtml.get('nombreHtml').valid && formAgregarHtml.get('nombreHtml').touched"
-              id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="nombreHtml">
+              id="recipient-name" placeholder="Ej: menu1" formControlName="nombreHtml">
             <div *ngIf="!formAgregarHtml.get('nombreHtml').valid && formAgregarHtml.get('nombreHtml').touched">
               <span class="text-danger">Debe ingresar un nombre de menú</span>
             </div>
           </div>
           <div class="input-group mb-3">
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" formControlName="docHtml"  (change)="onFileChange($event,formAgregarHtml.controls['docHtml'])" >
+              <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                (change)="onFileChange($event,formAgregarHtml.controls['docHtml'])">
               <label class="custom-file-label" for="inputGroupFile01">adjuntar Html</label>
             </div>
           </div>
@@ -39,8 +85,9 @@
 <div class="modal fade" id="pdf" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-facebook text-white">
-        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-facebook mr-2" aria-hidden="true"></i>Ingresa PDF</h5>
+      <div class="modal-header bg-youtube text-white">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>Ingrese
+          PDF</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -50,28 +97,32 @@
           <div class="form-group">
             <label for="recipient-name">Nombre Menú:</label>
             <input type="text" class="form-control" [class.is-invalid]="!formAgregarPdf.get('nombrePdf').valid && formAgregarPdf.get('nombrePdf').touched"
-              id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="nombrePdf">
+              id="recipient-name" placeholder="menu1 " formControlName="nombrePdf">
             <div *ngIf="!formAgregarPdf.get('nombrePdf').valid && formAgregarPdf.get('nombrePdf').touched">
               <span class="text-danger">Debe ingresar un nombre de menú</span>
             </div>
           </div>
           <div class="form-group">
-              <label for="recipient-name">Nombre Pdf:</label>
-              <input type="text" class="form-control" [class.is-invalid]="!formAgregarPdf.get('nombreDoc').valid && formAgregarPdf.get('nombreDoc').touched"
-                id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="nombreDoc">
-              <div *ngIf="!formAgregarPdf.get('nombreDoc').valid && formAgregarPdf.get('nombreDoc').touched">
-                <span class="text-danger">Debe ingresar un nombre de menú</span>
-              </div>
+            <label for="recipient-name">Nombre Pdf:</label>
+            <input type="text" class="form-control" [class.is-invalid]="!formAgregarPdf.get('nombreDoc').valid && formAgregarPdf.get('nombreDoc').touched"
+              id="recipient-name" placeholder="Ej: documento " formControlName="nombreDoc">
+            <div *ngIf="!formAgregarPdf.get('nombreDoc').valid && formAgregarPdf.get('nombreDoc').touched">
+              <span class="text-danger">Debe ingresar un nombre de menú</span>
             </div>
+          </div>
           <div class="input-group mb-3">
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" formControlName="docPdf" (change)="onFileChange($event,formAgregarPdf.controls['docPdf'])">
+              <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                (change)="onFileChange($event,formAgregarPdf.controls['docPdf'])">
               <label class="custom-file-label" for="inputGroupFile01">adjuntar pdf</label>
+              <div *ngIf="!formAgregarPdf.get('docPdf').valid && formAgregarPdf.get('docPdf').touched">
+                <span class="text-danger">Debe adjuntar documento</span>
+              </div>
             </div>
           </div>
           <div class="info mb-2">
-            <button type="submit" [disabled]="!formAgregarFacebook.valid" class="btn btn-primary">Agregar</button>
-            <button id="btnAgregarFacebook" data-dismiss="modal" style="display:none"></button>
+            <button type="submit" [disabled]="!formAgregarPdf.valid" class="btn btn-primary">Agregar</button>
+            <button id="btnAgregarPdf" data-dismiss="modal" style="display:none"></button>
           </div>
         </form>
       </div>
@@ -95,7 +146,7 @@
           <div class="form-group">
             <label for="recipient-name">Nombre Menú:</label>
             <input type="text" class="form-control" [class.is-invalid]="!formAgregarFacebook.get('nombreFacebook').valid && formAgregarFacebook.get('nombreFacebook').touched"
-              id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="nombreFacebook">
+              id="recipient-name" placeholder="menu1 " formControlName="nombreFacebook">
             <div *ngIf="!formAgregarFacebook.get('nombreFacebook').valid && formAgregarFacebook.get('nombreFacebook').touched">
               <span class="text-danger">Debe ingresar un nombre de menú</span>
             </div>
@@ -139,7 +190,7 @@
           <div class="form-group">
             <label for="recipient-name">Nombre Menú:</label>
             <input type="text" class="form-control" [class.is-invalid]="!formAgregarTwitter.get('nombreTwitter').valid && formAgregarTwitter.get('nombreTwitter').touched"
-              id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="nombreTwitter">
+              id="recipient-name" placeholder="menu1 " formControlName="nombreTwitter">
             <div *ngIf="!formAgregarTwitter.get('nombreTwitter').valid && formAgregarTwitter.get('nombreTwitter').touched">
               <span class="text-danger">Debe ingresar un nombre de menú</span>
             </div>
@@ -180,25 +231,25 @@
           <div class="form-group">
             <label for="recipient-name">Nombre Menú:</label>
             <input type="text" class="form-control" [class.is-invalid]="!formAgregarRadio.get('nombreRadio').valid && formAgregarRadio.get('nombreRadio').touched"
-              id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="nombreRadio">
+              id="recipient-name" placeholder="menu1 " formControlName="nombreRadio">
             <div *ngIf="!formAgregarRadio.get('nombreRadio').valid && formAgregarRadio.get('nombreRadio').touched">
               <span class="text-danger">Debe ingresar un nombre de menú</span>
             </div>
           </div>
           <div class="form-group">
             <label for="recipient-name">Titulo:</label>
-            <input type="text" class="form-control" id="recipient-name" placeholder="Ej: www.twitter.com/mi-cuenta "
+            <input type="text" class="form-control" id="recipient-name" placeholder="Ej: RadioTu "
               appLettersChar formControlName="titulo">
             <div *ngIf="!formAgregarRadio.get('titulo').valid && formAgregarRadio.get('titulo').touched">
-              <span class="text-danger">Debe ingresar url</span>
+              <span class="text-danger">Debe ingresar titulo</span>
             </div>
           </div>
           <div class="form-group">
             <label for="recipient-name">Descripción:</label>
-            <input type="text" class="form-control" id="recipient-name" placeholder="Ej: www.twitter.com/mi-cuenta "
+            <input type="text" class="form-control" id="recipient-name" placeholder="Breve descripción"
               appLettersChar formControlName="descripcion">
             <div *ngIf="!formAgregarRadio.get('descripcion').valid && formAgregarRadio.get('descripcion').touched">
-              <span class="text-danger">Debe ingresar url</span>
+              <span class="text-danger">Debe ingresar descripción</span>
             </div>
           </div>
           <div class="form-group">
@@ -236,7 +287,7 @@
           <div class="form-group">
             <label for="recipient-name">Nombre Menú:</label>
             <input type="text" class="form-control" [class.is-invalid]="!formAgregarYoutube.get('nombreYoutube').valid && formAgregarYoutube.get('nombreYoutube').touched"
-              id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="nombreYoutube">
+              id="recipient-name" placeholder="menu1 " formControlName="nombreYoutube">
             <div *ngIf="!formAgregarYoutube.get('nombreYoutube').valid && formAgregarYoutube.get('nombreYoutube').touched">
               <span class="text-danger">Debe ingresar un nombre de menú</span>
             </div>
@@ -276,7 +327,7 @@
           <div class="form-group">
             <label for="recipient-name">Nombre:</label>
             <input type="text" class="form-control" [class.is-invalid]="!formAgregarUsuario.get('nombre').valid && formAgregarUsuario.get('nombre').touched"
-              appLettersChar id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="nombre">
+              appLettersChar id="recipient-name" placeholder="Ej: pedro " formControlName="nombre">
             <div *ngIf="!formAgregarUsuario.get('nombre').valid && formAgregarUsuario.get('nombre').touched">
               <span class="text-danger">Debe ingresar nombre</span>
             </div>
@@ -301,7 +352,7 @@
           <div class="form-group">
             <label for="recipient-name">Dirección:</label>
             <input type="text" class="form-control" [class.is-invalid]="!formAgregarUsuario.get('direccion').valid && formAgregarUsuario.get('direccion').touched"
-              appLettersChar id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="direccion">
+              appLettersChar id="recipient-name" placeholder="Ej: casa #123 " formControlName="direccion">
             <div *ngIf="!formAgregarUsuario.get('direccion').valid && formAgregarUsuario.get('direccion').touched">
               <span class="text-danger">Debe ingresar dirección</span>
             </div>
@@ -334,7 +385,7 @@
           <div class="form-group">
             <label for="recipient-name">Nombre Menú:</label>
             <input type="text" class="form-control" [class.is-invalid]="!formAgregarGoogle.get('nombreGoogle').valid && formAgregarGoogle.get('nombreGoogle').touched"
-              id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="nombreGoogle">
+              id="recipient-name" placeholder="Ej: menu1 " formControlName="nombreGoogle">
             <div *ngIf="!formAgregarGoogle.get('nombreGoogle').valid && formAgregarGoogle.get('nombreGoogle').touched">
               <span class="text-danger">Debe ingresar un nombre de menú</span>
             </div>
@@ -354,7 +405,7 @@
         </form>
       </div>
       <div class="modal-footer text-left">
-        <p>aun no tienes Form Google? <a href="https://docs.google.com/forms/u/0/">crea Fom Google
+        <p>aun no tienes Form Google? <a target="_blank" href="https://docs.google.com/forms/u/0/">crea Fom Google
           </a></p>
       </div>
     </div>
@@ -378,7 +429,7 @@
           <div class="form-group">
             <label for="recipient-name">Nombre Menú:</label>
             <input type="text" class="form-control" [class.is-invalid]="!formAgregarWordpress.get('nombreWordpress').valid && formAgregarWordpress.get('nombreWordpress').touched"
-              id="recipient-name" placeholder="Ej: www.youtube.com/mi-cuenta " formControlName="nombreWordpress">
+              id="recipient-name" placeholder="Ej: menu1 " formControlName="nombreWordpress">
             <div *ngIf="!formAgregarWordpress.get('nombreWordpress').valid && formAgregarWordpress.get('nombreWordpress').touched">
               <span class="text-danger">Debe ingresar un nombre de menú</span>
             </div>
