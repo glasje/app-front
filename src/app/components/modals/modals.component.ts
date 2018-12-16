@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ConfigurarAppsService } from 'src/app/services/configurar-apps.service';
+import { ConfigurarApps } from 'src/app/models/ConfiguararApps';
 
 @Component({
   selector: 'app-modals',
@@ -18,6 +19,7 @@ export class ModalsComponent implements OnInit {
   formAgregarWordpress: FormGroup;
   formAgregarHtml: FormGroup;
   formAgregarPdf: FormGroup;
+  formAgregarImagenes: FormGroup;
   constructor(
     private _configurarApps: ConfigurarAppsService
   ) {
@@ -132,6 +134,18 @@ export class ModalsComponent implements OnInit {
       nombreDoc: new FormControl(null, {
         validators: [Validators.required]
       }),
+    });
+
+    this.formAgregarImagenes = new FormGroup({
+      logo: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      splash: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      icono: new FormControl(null, {
+        validators: [Validators.required]
+      })
     });
     this.listaDatos = [];
   }
@@ -363,11 +377,27 @@ export class ModalsComponent implements OnInit {
       };
 
       this._configurarApps.AgregarDatos(pdf, 'pdf');
-      document.getElementById('btnAgregarUsuario').click();
+      document.getElementById('btnAgregarPdf').click();
       this.formAgregarPdf.reset();
     } else {
       Object.keys(this.formAgregarPdf.controls).forEach(key => {
         this.formAgregarPdf.get(key).markAsTouched();
+      });
+    }
+    
+  }
+
+  AgregarImagenes(){
+    if (this.formAgregarImagenes.valid) {
+      ConfigurarApps.config.icono= this.formAgregarImagenes.get('icono').value;
+      ConfigurarApps.config.logo= this.formAgregarImagenes.get('logo').value;
+      ConfigurarApps.config.splash= this.formAgregarImagenes.get('splash').value;
+      
+      document.getElementById('btnAgregarImagenes').click();
+      this.formAgregarImagenes.reset();
+    } else {
+      Object.keys(this.formAgregarImagenes.controls).forEach(key => {
+        this.formAgregarImagenes.get(key).markAsTouched();
       });
     }
   }
