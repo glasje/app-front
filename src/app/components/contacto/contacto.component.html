@@ -1,12 +1,12 @@
 
         <!-- START CONTACT DESIGN AREA -->
        
-            <div class="container mt-4 mb-4">
+            <div  id="contact"class="container mt-4 mb-4">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="section-title">
                             <h2>Cuéntanos algo!</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                           
                         </div>
                     </div>
                 </div>
@@ -17,21 +17,21 @@
                               <input type="text" class="form-control" id="recipient-name" placeholder="Nombre " appLettersChar
                                 formControlName="titulo">
                               <div *ngIf="!formAgregarRadio.get('titulo').valid && formAgregarRadio.get('titulo').touched">
-                                <span class="text-danger">Debe ingresar url</span>
+                                <span class="text-danger">Debe ingresar su nombre</span>
                               </div>
                             </div>
                             <div class="form-group">
                               <input type="text" class="form-control" id="recipient-name" placeholder="Email " appLettersChar
                                 formControlName="descripcion">
                               <div *ngIf="!formAgregarRadio.get('descripcion').valid && formAgregarRadio.get('descripcion').touched">
-                                <span class="text-danger">Debe ingresar url</span>
+                                <span class="text-danger">Debe ingresar su correo</span>
                               </div>
                             </div>
                             <div class="form-group">
                                 <textarea rows="6" name="message" class="form-control" id="description"
                                 placeholder="Mensaje" required="required"></textarea>
                               <div *ngIf="!formAgregarRadio.get('urlRadio').valid && formAgregarRadio.get('urlRadio').touched">
-                                <span class="text-danger">Debe ingresar url</span>
+                                <span class="text-danger">Debe ingresar mensaje</span>
                               </div>
                             </div>
                             <div class="text-center actions">
