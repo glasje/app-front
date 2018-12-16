@@ -33,8 +33,10 @@
         </div>
         <!-- List Group -->
         <ul class="list-group list-group-flush border-list">
-          <li class="list-group-item black-list">The Sun will come back <span class="close cross-red">×</span></li>
-          <li class="list-group-item list-empty">Aquí estarán tus características..</li>
+          <li class="list-group-item black-list" *ngFor="let item of listaCaracteristicas">
+            {{item.nombre}}<span class="close cross-red" (click)="EliminarModulos(item)">×</span>
+        </li>
+          <!-- <li class="list-group-item list-empty">Aquí estarán tus características..</li> -->
         </ul>
     </div>
 </div>
