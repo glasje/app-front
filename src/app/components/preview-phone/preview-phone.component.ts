@@ -65,10 +65,9 @@ export class PreviewPhoneComponent implements OnInit {
   AgregarEnlaceMod(mod){
     let sidenav = document.getElementById("mySidenav");
     mod.forEach(element => {
-      console.log(element);
       element.forEach(atributos =>{
         var enlace = document.createElement("a");
-        enlace.setAttribute('href', '#dos');
+        //enlace.setAttribute('href', '');
         enlace.classList.add('a-modulo');
         enlace.style.padding = '8px 8px 8px 32px';
         enlace.style.textDecoration = 'none';
@@ -81,8 +80,4 @@ export class PreviewPhoneComponent implements OnInit {
       })      
     });
   }
-
-
-
-
 }
