@@ -6,6 +6,7 @@ import { DatosApps } from '../models/DatosApps';
 })
 export class ConfigurarAppsService {
   @Output() change: EventEmitter<boolean> = new EventEmitter();
+  @Output() delete: EventEmitter<boolean> = new EventEmitter();
   listaDatos: DatosApps;
   constructor() {
     this.listaDatos = new DatosApps();
@@ -60,6 +61,49 @@ export class ConfigurarAppsService {
         break;
       }
 
+    }
+    this.change.emit(true);
+  }
+
+  EliminarDatos(item){
+    switch (item.id) {
+      
+      case ('1'): {
+        this.listaDatos.listaHtml = [];
+        break;
+      }
+      case ('2'): {
+        this.listaDatos.listaPdf = [];
+        break;
+      }
+      case ('4'): {
+        this.listaDatos.listaFacebook = [];
+        break;
+      }
+      case ('5'): {
+        this.listaDatos.listaTwitter = [];
+        break;
+      }
+      case ('9'): {
+        this.listaDatos.listaYoutube = [];
+        break;
+      }
+      case ('6'): {
+        this.listaDatos.contactoUsuario = [];
+        break;
+      }
+      case ('3'): {
+        this.listaDatos.listaRadio = [];
+        break;
+      }
+      case ('7'): {
+        this.listaDatos.listaGoogle = [];
+        break;
+      }
+      case ('8'): {
+        this.listaDatos.listaWordPress = [];
+        break;
+      }
     }
     this.change.emit(true);
   }
